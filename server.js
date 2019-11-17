@@ -15,6 +15,16 @@ app.use(cors());
 app.use(express.json());
 
 //Routes 
+const UserController = require("./controllers/UserController.js");
+app.get("/users", UserController.all);
+app.get("/users/create", UserController.create);
+app.get("/users/update/:name", UserController.update);
+app.get("/users/delete/:name", UserController.delete);
+app.get("/users/:name/addGroup", UserController.addGroup);
+app.get("/users/:name/seeGroups", UserController.seeGroups);
+const GroupController = require("./controllers/GroupController.js");
+app.get("/groups", GroupController.all);
+app.get("/groups/create", GroupController.create);
 
 //Connect to SERVER
 app.listen(PORT);
